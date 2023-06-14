@@ -1,0 +1,61 @@
+#' NAME_OF_DATA_SET data sets
+#'
+#' @description
+#' A short description...
+#'
+#' @param envir Environment to load data sets into. Defaults to
+#'   `parent.frame()`.
+#' @param quiet Logical, should function announce what data sets are loaded.
+#' @param ... Arguments passed to [pins::pin_read()].
+#' @return tibble
+#'
+#' @details
+#' Additional details...
+#'
+#' Please list what license this data sets are under...
+#'
+#' # tibble print
+#'
+#' ```{r}
+TIBBLE_PRINTS
+#' ```
+#'
+#' # glimpse()
+#'
+#' ```{r}
+GLIMPSE_PRINTS
+#' ```
+#'
+#' @name NAME_OF_DATA_SET
+#' @aliases NAME_OF_DATA_SET OTHER_ALIASES
+#'
+#' @source
+#' Information about where the data comes from...
+#'
+#' @examples
+#' \donttest{
+#' attach_NAME_OF_DATA_SET()
+#' }
+#' @export
+attach_NAME_OF_DATA_SET <- function(envir = parent.frame(),
+                                    quiet = FALSE,
+                                    ...) {
+  data <- pins::pin_read(modeldatatoo_board, "NAME_OF_DATA_SET", ...)
+
+  data_names <- names(data)
+
+  for (name in data_names) {
+    envir[[name]] <- data[[name]]
+  }
+
+  if (!quiet) {
+    cat(
+      "The following data sets have been loaded:",
+      paste(paste0("`", data_names, "`"), collapse = ", "),
+      "Silence this message by setting `quiet = TRUE`.",
+      sep = "\n"
+    )
+  }
+
+  return(invisible())
+}
