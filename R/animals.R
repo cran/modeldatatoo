@@ -10,7 +10,7 @@
 #'
 #' @details
 #'
-#' This data set contains quite a bit of missing data and malformed fiels.
+#' This data set contains quite a bit of missing data and malformed fields.
 #'
 #' # tibble print
 #'
@@ -34,5 +34,5 @@
 #' }
 #' @export
 data_animals <- function(...) {
-  pins::pin_read(modeldatatoo_board, "animals", ...)
+  pins::pin_read(modeldatatoo_board(), "animals", ...)
 }
